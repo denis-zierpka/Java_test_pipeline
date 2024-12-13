@@ -10,6 +10,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <sonar.projectKey>Java-test</sonar.projectKey>
+        <sonar.projectName>'Java-test'</sonar.projectName>
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.token>${SONAR_TOKEN}</sonar.token>
     </properties>
 
 
