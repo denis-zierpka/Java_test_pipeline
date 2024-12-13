@@ -37,13 +37,20 @@ pipeline {
                 echo 'Static Analysis Completed'
             }
         }
-        stage('Deploy') {
+        stage('Build Docker Image') {
             steps {
-                sh 'docker compose stop'
-                sh 'docker compose down'
-                sh 'docker compose up -d'
+                script {
+                    sh 'docker build -f app/Dockerfile -t client:latest app'
+                }
             }
         }
+        // stage('Deploy') {
+        //     steps {
+        //         sh 'docker compose stop'
+        //         sh 'docker compose down'
+        //         sh 'docker compose up -d'
+        //     }
+        // }
     }
 
 

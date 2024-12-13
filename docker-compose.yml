@@ -8,7 +8,7 @@ services:
       - 50000:50000
     container_name: jenkins
     volumes:
-    - ./jenkins_data:/var/jenkins_home
+      - ./jenkins_data:/var/jenkins_home
   sonarqube:
     image: sonarqube:community
     depends_on:
