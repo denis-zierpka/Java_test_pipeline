@@ -14,7 +14,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn test -P allure'
+                sh 'mvn test'
             }
             post {
                 always {
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 withSonarQubeEnv("SonarServer1") {
                     script {
-                        sh 'mvn clean package sonar:sonar -P sonar'
+                        sh 'mvn clean package sonar:sonar'
                     }
                 }
                 echo 'Static Analysis Completed'
