@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn clean'
             }
         }
 
@@ -37,13 +37,13 @@ pipeline {
                 echo 'Static Analysis Completed'
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    sh 'docker build -f app/Dockerfile -t client:latest app'
-                }
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         script {
+        //             sh 'docker build -f app/Dockerfile -t client:latest app'
+        //         }
+        //     }
+        // }
         // stage('Deploy') {
         //     steps {
         //         sh 'docker compose stop'
