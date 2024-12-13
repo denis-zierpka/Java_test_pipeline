@@ -4,7 +4,6 @@ pipeline {
     tools {
         maven 'maven-3.8.1'
         allure 'allure'  
-        docker 'Docker'
     }
 
     stages {
