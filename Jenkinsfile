@@ -20,8 +20,7 @@ pipeline {
             post {
                 always {
                     allure (
-                        results: [[path: 'target/allure-results']],
-                        includeProperties: false
+                        results: [[path: 'target/allure-results']]
                     )
                 }
             }
