@@ -27,24 +27,15 @@ pipeline {
             }
         }
 
-        // stage('SonarQube') {
-        //     steps {
-        //         withSonarQubeEnv("SonarQube_server") {
-        //             script {
-        //                 sh 'mvn clean package sonar:sonar'
-        //             }
-        //         }
-        //     }
-        // }
-        // stage('Deploy app') {
-        //     steps {
-        //         script {
-        //             sh 'docker --version' 
-        //             sh 'docker build -f app/Dockerfile -t server:latest app'
-        //             sh 'docker-compose -f app/app-docker-compose.yml up -d'
-        //         }
-        //     }
-        // }
+        stage('SonarQube') {
+            steps {
+                withSonarQubeEnv("SonarQube_server") {
+                    script {
+                        sh 'mvn clean package sonar:sonar'
+                    }
+                }
+            }
+        }
     }
 
 
