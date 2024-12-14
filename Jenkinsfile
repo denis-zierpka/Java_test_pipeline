@@ -37,13 +37,14 @@ pipeline {
                 echo 'Static Analysis Completed'
             }
         }
-        // stage('Build Docker Image') {
-        //     steps {
-        //         script {
-        //             sh 'docker build -f app/Dockerfile -t client:latest app'
-        //         }
-        //     }
-        // }
+        stage('Deploy app') {
+            steps {
+                script {
+                    sh 'docker build -f app/Dockerfile -t server:latest app'
+                    sh 'docker-compose -f app/app-docker-compose.yml up -d'
+                }
+            }
+        }
         // stage('Deploy') {
         //     steps {
         //         sh 'docker compose stop'
