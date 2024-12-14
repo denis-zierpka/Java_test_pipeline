@@ -37,14 +37,4 @@ pipeline {
             }
         }
     }
-
-
-    post {
-        success {
-            echo 'Success!'
-        }
-        failure {
-            echo 'Failure!'
-        }
-    }
 }
