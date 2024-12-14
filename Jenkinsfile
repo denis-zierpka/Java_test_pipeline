@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven-3.8.1'
         allure 'allure'  
     }
 
@@ -46,22 +45,15 @@ pipeline {
                 }
             }
         }
-        // stage('Deploy') {
-        //     steps {
-        //         sh 'docker compose stop'
-        //         sh 'docker compose down'
-        //         sh 'docker compose up -d'
-        //     }
-        // }
     }
 
 
     post {
         success {
-            echo 'Сборка прошла успешно!'
+            echo 'Success!'
         }
         failure {
-            echo 'Сборка завершилась с ошибкой.'
+            echo 'Failure!'
         }
     }
 }
