@@ -35,5 +35,11 @@ pipeline {
                 }
             }
         }
+
+        stage('Check') {
+            steps {
+                echo 'check'
+            }
+        }
     }
 }
