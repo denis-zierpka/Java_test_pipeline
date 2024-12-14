@@ -7,34 +7,33 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Clean') {
             steps {
                 sh 'mvn clean'
             }
         }
 
-        stage('Test') {
+        stage('Test and allure') {
             steps {
                 sh 'mvn test'
             }
             post {
                 always {
-                    allure includeProperties:
-                     false,
-                     jdk: '',
-                     results: [[path: 'target/allure-results']]
+                    allure (
+                        results: [[path: 'target/allure-results']],
+                        includeProperties: false
+                    )
                 }
             }
         }
 
-        stage('Static Analysis') {
+        stage('SonarQube') {
             steps {
                 withSonarQubeEnv("SonarQube_server") {
                     script {
                         sh 'mvn clean package sonar:sonar'
                     }
                 }
-                echo 'Static Analysis Completed'
             }
         }
         stage('Deploy app') {
